@@ -3,10 +3,13 @@
 #include <stdio.h>
 
 /**
-  * Main - Entry point
-  * Description: prints last digit of random number
-  * Return: 0
+  * main - Entry point of the program
+  *
+  * This program generates a random number and prints it to the console
+  *
+  * Return: always 0
   */
+
 int main(void)
 {
 	int n;
