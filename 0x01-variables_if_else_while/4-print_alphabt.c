@@ -1,26 +1,16 @@
 #include <stdio.h>
 
 /**
-  * main - print a-z A-Z
+  * main - print a-z sans q,e
   * Return: 0
   */
 int main(void)
 {
-	char small = 'a';
-	char capital = 'A';
+	char small;
 
-	while (small <= 'z')
-	{
-		putchar(small);
-		small++;
-	}
-
-	while (capital <= 'Z')
-	{
-		putchar(capital);
-		capital++;
-	}
-
+	for (small = 'a' ; small <= 'z' ; small++)
+		if (small != 'q' && small != 'e')
+			putchar(small);
 	putchar('\n');
 	return (0);
 }
