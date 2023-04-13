@@ -2,11 +2,24 @@
 #include <string.h>
 
 /**
- * _strlen - returns the length of a string
- * @s: string whose length needs to be calculated and returned
- * Return: integer denoting the length of the string
+ * _strncpy - copy a string
+ * @dest: input value
+ * @src: input value
+ * @n: input value
+ *
+ * Return: dest
  */
-int _strlen(char *s)
+
+char *_strcpy(char *dest, char *src)
 {
-	return (strlen(s));
+        int i = 0;
+
+        while (*(src + i) != '\0')
+        {
+                *(dest + i) = *(src + i);
+                i++;
+        }
+        *(dest + i) = '\0';
+
+        return (dest);
 }
