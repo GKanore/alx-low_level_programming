@@ -5,15 +5,12 @@
  * @b: input amount
  * Return: pointer to new mem
  */
-
-
 void *malloc_checked(unsigned int b)
 {
-    void *ptr = malloc(b);
+	void *dew;
 
-    if (ptr == NULL) {
-        exit(98);
-    }
-
-    return ptr;
+	dew = malloc(b);
+	if (dew == NULL)
+		exit(98);
+	return (dew);
 }
