@@ -1,45 +1,47 @@
-#include "dog.h"
 #include <stdlib.h>
-#include <string.h>
+#include "dog.h"
 
 /**
-  * new_dog - creates a new instance of struct dog
-  * @name: dog's name
-  * @age: dog's age
-  * @owner: dog's owner
-  * Return: pointer to new dog if successful otherwise NULL
-  */
+ * new_dog - creates a new dog
+ * @name: name of dog
+ * @age: age of dog
+ * @owner: owner of dog
+ *
+ * Return: pointer to new dog
+ */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *d;
+	unsigned int nl, ol, i;
+	dog_t *dog;
 
 	if (name == NULL || owner == NULL)
+		return (NULL);
+	dog = malloc(sizeof(dog_t));
+	if (dog == NULL)
+		return (NULL);
+	for (nl = 0; name[nl]; nl++)
+		;
+	nl++;
+	dog->name = malloc(nl * sizeof(char));
+	if (dog->name == NULL)
 	{
+		free(dog);
 		return (NULL);
 	}
-
-	d = malloc(sizeof(dog_t));
-	if (d)
+	for (i = 0; i < nl; i++)
+		dog->name[i] = name[i];
+	dog->age = age;
+	for (ol = 0; owner[ol]; ol++)
+		;
+	ol++;
+	dog->owner = malloc(ol * sizeof(char));
+	if (dog->owner == NULL)
 	{
-		d->name = strdup(name); /* set name */
-		if (d->name == NULL)
-		{
-			free(d->name);
-			free(d);
-			return (NULL);
-		}
-		d->age = age; /* set age */
-		d->owner = strdup(owner); /* set owner */
-		if (d->owner == NULL)
-		{
-			free(d->name);
-			free(d->owner);
-			free(d);
-			return (NULL);
-		}
-		return (d);
+		free(dog->name);
+		free(dog);
+		return (NULL);
 	}
-
-	free(d);
-	return (NULL);
+	for (i = 0; i < ol; i++)
+		dog->owner[i] = owner[i];
+	return (dog);
 }
